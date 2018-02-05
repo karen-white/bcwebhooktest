@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
+let webhook = "";
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res) => {
+  res.render('index', { webhook: webhook });
 });
 
-module.exports = router;
+router.post('/webhook', (req, res) => {
+  webhook = JSON.stringify(req.body);
+  res.sendStatus(200);
+});
