@@ -11,3 +11,5 @@ router.post('/webhook', (req, res) => {
   webhook = JSON.stringify(req.body);
   res.sendStatus(200);
 });
+
+module.exports = router;
